@@ -21,7 +21,9 @@ $('form').bootstrapValidator({
               max: 6,
               message: '用户名长度必须在3到6之间'
             },
-         
+            callback:{
+              message:'用户名错误'
+            }
           }
         },
         password:{
@@ -36,7 +38,9 @@ $('form').bootstrapValidator({
                   max: 30,
                   message: '账号长度必须在6到30之间'
                 },
-             
+                callback:{
+                  message:'密码错误'
+                }
               }
         }
       }
@@ -53,6 +57,28 @@ $("form").on('success.form.bv', function (e) {
         data:$('form').serialize(),
         success:function(res){
           console.log(res)
+          if(res.error == 1000){
+            // alert('用户名不存在');
+            $('form').data('bootstrapValidator').updateStatus('username','INVALID','callback');
+       
+
+          }
+          if(res.error == 1001){
+            // alert('密码错误');
+            $('form').data('bootstrapValidator').updateStatus('password','INVALID','callback')
+
+          }
+          if(res.success){
+            alert('成功');
+            location.href = 'index.html';
+          }
         }
     })
 });
+
+
+//重置按钮 , 只重置了表单项的内容, 没有重置验证信息
+$('[type="reset"]').click(function(){
+  // alert(1)
+  $('form').data('bootstrapValidator').resetForm(true)
+})
