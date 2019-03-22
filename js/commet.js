@@ -24,3 +24,9 @@ $('#out_btn').click(function(){
     // 关闭模态框
     // 回到登陆页面
 })
+
+// 点击分类, 切换slidedown
+$('.cate_tog').click(function(){
+ 
+  $('.cate').slideToggle()
+})

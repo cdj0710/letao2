@@ -10,9 +10,11 @@ a:link{
     text-decoration: none;
 }
 /* 点击 左边框颜色变化 */
-.active{
+.nav li.active,
+.nav .cate li.active{
     border-color: #006699
 }
+
 .lt_aside{
     width: 180px;
     height: 100%;
@@ -69,6 +71,10 @@ a:link{
     color: white;
     font-size: 14px;
 }
+.nav li .cate a{
+    padding-left: 55px;
+}
+
 /* 右 */
 .rg_aside{
     width: 100%;
