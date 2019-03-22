@@ -6,11 +6,12 @@ $('.rg_nav .pull-left').click(function(){
 //   $('.rg_main').css('paddingLeft',0);
 })
 
-// 点击退出
+// 点击退出 显示模态框
 $('.rg_aside .pull-right').click(function(){
 //   alert(1)
     $('#out_modal').modal('show')
 })
+// 点击确认退出 返回登陆页面
 $('#out_btn').click(function(){
     // alert(1)
     // 发送请求
@@ -25,8 +26,26 @@ $('#out_btn').click(function(){
     // 回到登陆页面
 })
 
-// 点击分类, 切换slidedown
+// 点击分类管理, 切换slidedown 显示二级分类
 $('.cate_tog').click(function(){
- 
   $('.cate').slideToggle()
 })
+
+// 页面渲染
+var current = 1;
+rend()
+function rend(){
+    // 发送ajax
+
+  $.ajax({
+      url:'/user/queryUser',
+      type:'get',
+      data:{
+        page:current,
+        pageSize:5
+      },
+      success:function(res){
+        console.log(res)
+      }
+  })
+}
