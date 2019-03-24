@@ -64,18 +64,25 @@
                     <li><a href="#">管理系统</a></li>
                     <li class="active">首页</li>
                 </ol>
-                <table>
+                <!-- 内容表格 -->
+                <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <th>序号</th>
-                            <th>用户名</th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
+                            <th width="10%">序号</th>
+                            <th width="20%">用户名</th>
+                            <th width="30%">手机号</th>
+                            <th width="20%">状态</th>
+                            <th>操作</th>
                         </tr>
                     </thead>
+                    <tbody class="text-center">
+                        <!-- 渲染 -->
+                    </tbody>
                 </table>
+                <!-- 分页器 -->
+                <ul id="paginator">
 
+                </ul>
             </div>
         </div>
     </div>
@@ -101,7 +108,27 @@
     
     <script src="./lib/jquery/jquery.js"></script>
     <script src="./lib/bootstrap/js/bootstrap.js"></script>
+    <script src="./lib/bootstrap-paginator/bootstrap-paginator.js"></script>
     <script src="./lib/artTemplate/template-web.js"></script>
     <script src="js/commet.js"></script>
+    <script src="js/user.js"></script>
+    <!-- 表格模板 -->
+    <script type="text/html" id="temp">
+       {{each rows v i }}
+       <tr>
+            <td>{{(page -1)*size + i + 1}}</td>
+            <td>{{v.username}}</td>
+            <td>{{v.mobile}}</td>
+            <td>{{v.isDelete == 1? "正常":"禁用"}}</td>
+            <td>
+                {{if v.isDelete !=1}}
+                <button class="btn btn-success">启用</button>
+                {{else}}
+                <button class="btn btn-danger">禁用</button>
+                {{/if}}
+            </td>
+        </tr>
+       {{/each}}
+    </script>
 </body>
 </html>

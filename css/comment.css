@@ -117,3 +117,9 @@ a:link{
 .rg_aside .rg_main .breadcrumb a{
     color: #337ab7;
 }
+.rg_aside .rg_main table th{
+    text-align: center;
+}
+.rg_aside .rg_main table td{
+    vertical-align: middle;
+}
